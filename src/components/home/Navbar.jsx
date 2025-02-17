@@ -1,12 +1,24 @@
 import React from 'react'
 import Logo from '../../assets/Images/KarmaLogo.jpg'
+import { useNavigate } from 'react-router';
 
 const Navbar = () => {
 
     const menuItems = ["Home", "About Us", "Contact Us"];
+    const navigate = useNavigate();
 
-    function funMenuSelection(event){
-        console.log(event.target.value);
+    function funMenuSelection(event) {
+        
+        console.log(event.currentTarget.textContent);
+        if (event.currentTarget.textContent == "About Us") {
+            navigate("/about-us");
+        }
+        if (event.currentTarget.textContent == "Contact Us") {
+            navigate("/contact-us");
+        }
+        if (event.currentTarget.textContent == "Home") {
+            navigate("/");
+        }
     }
 
     return (
@@ -21,7 +33,9 @@ const Navbar = () => {
                         <ul className='flex space-x-10'>
                             {
                                 menuItems.map((x) => {
-                                    return <li key={x} value={x}>{x}</li>
+                                    return (
+                                        <li key={x} onClick={funMenuSelection}>{x}</li>
+                                    )
                                 })
                             }
                         </ul>

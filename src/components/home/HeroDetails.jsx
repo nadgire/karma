@@ -2,25 +2,25 @@ import React from 'react'
 
 const HeroDetails = () => {
     return (
-        <div className='w-2/3 text-center'>
+        <div className='w-2/3 text-center space-y-10'>
             <h1 className='w-2/3 text-4xl mx-auto italic font-bold'>A robust performance evaluation platform designed for modern organizations and their dynamic workforce.</h1>
-            <ul>
+            <ol className='space-y-3'>
                 <li>
-                    1. Keep Track
+                    Keep Track of employee performance
                 </li>
                 <li>
-                    2. Rate your employee
+                    Rate your employee
                 </li>
                 <li>
-                    3. Analyse
+                    Analyse the growth of the employee
                 </li>
                 <li>
-                    4. Review before you hire
+                    Review before you hire
                 </li>
                 <li>
-                    5. Hiring made easy
+                    Hiring made easy
                 </li>
-            </ul>
+            </ol>
         </div>
     )
 }
