@@ -2,7 +2,7 @@ import React from 'react'
 
 const HeroDetails = () => {
     return (
-        <div className='w-2/3 text-center space-y-10'>
+        <div className='w-2/3 text-center space-y-10 select-none'>
             <h1 className='w-2/3 text-4xl mx-auto italic font-bold'>A robust performance evaluation platform designed for modern organizations and their dynamic workforce.</h1>
             <ol className='space-y-3'>
                 <li>

@@ -19,7 +19,10 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
-          
+          <Route path="/employee-dashboard/profile" element={<EmployeeDashboard />} />
+          <Route path="/employee-dashboard/education" element={<EmployeeDashboard />} />
+          <Route path="/employee-dashboard/experience" element={<EmployeeDashboard />} />
+          <Route path="/employee-dashboard/feedback" element={<EmployeeDashboard />} />
         </Routes>
       </BrowserRouter>
     </>
