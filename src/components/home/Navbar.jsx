@@ -24,7 +24,7 @@ const Navbar = () => {
     return (
         <>
             <div className='shadow-xl select-none'>
-                <div className='w-[1200px] flex items-center justify-between mx-auto'>
+                <div className='max-w-[1280px] px-10 xl:px-0 flex items-center justify-between mx-auto'>
                     <div className='py-3'>
                         <img src={Logo} alt="" className='w-36' />
                     </div>

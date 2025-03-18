@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import DashboardNav from '../DashboardNav';
-import UserDashboardMenus from './UserDashboardMenus';
+import UserDashboardMenus from './DashboardMenus';
 import EmpToCompany from '../reviews/EmpToCompany'
 
-const EmployeeDashboard = () => {
+const Dashboard = () => {
 
 
 
@@ -31,4 +31,4 @@ const EmployeeDashboard = () => {
     )
 }
 
-export default EmployeeDashboard
+export default Dashboard

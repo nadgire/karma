@@ -6,7 +6,8 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 import Home from './components/Home'
 import AboutUs from './components/about-us/AboutUs'
 import ContactUs from './components/contact-us/ContactUs'
-import EmployeeDashboard from './components/empdashboard/EmployeeDashboard'
+import EmployeeDashboard from './components/dashboard/Dashboard'
+import Signup from './components/Signup'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
           <Route path="/employee-dashboard/profile" element={<EmployeeDashboard />} />
           <Route path="/employee-dashboard/education" element={<EmployeeDashboard />} />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { RxAvatar } from "react-icons/rx";
 import { FaCaretDown } from "react-icons/fa";
-import UserDashboardMenus from './empdashboard/UserDashboardMenus';
+import UserDashboardMenus from './dashboard/DashboardMenus';
 import ProfileDropdown from './ProfileDropdown';
 
 

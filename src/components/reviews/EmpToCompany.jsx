@@ -24,4 +24,4 @@ const EmpToCompany = () => {
   )
 }
 
-export default EmpToCompany;
+export default EmpToCompany;  
