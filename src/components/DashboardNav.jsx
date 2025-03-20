@@ -27,7 +27,7 @@ const DashboardNav = () => {
                 <RxAvatar className='text-4xl text-blue-800' />
                 <FaCaretDown className='text-3xl text-blue-800' />
             </div>
-            {profileDropdownMenuFlag && <ProfileDropdown />}
+            {profileDropdownMenuFlag && <ProfileDropdown flag={profileDropdownMenu} />}
         </div>
     )
 }
