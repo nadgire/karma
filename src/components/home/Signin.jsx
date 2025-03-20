@@ -30,12 +30,18 @@ const Signin = () => {
             console.log("submitted");
             try {
                 if (values.userType == "Company") {
-                    console.log("com");
+                    var loginObj = { email: values.username, password: values.password }
+                    const response = await axios.post("http://13.61.233.178:8080/company/login", loginObj, { withCredentials: true });
+                    console.log(response.data.redirectUrl);
+                    if (response.data.status == "success") {
+                        navigate("/dashboard");
+                    }
                 }
                 if (values.userType == "Employee") {
-                    console.log(values);
                     var loginObj = { username: values.username, password: values.password }
                     const response = await axios.post("http://13.61.233.178:8080/employee/login", loginObj, { headers: { 'Content-Type': 'application/json' } });
+                    console.log(response.data.redirectUrl);
+
                     if (response.data.status == "success") {
                         navigate("/dashboard");
                     }
@@ -70,7 +76,7 @@ const Signin = () => {
                             {isForgotPasswordDialogOpen && <ForgotPasswordModal modalOff={closeDialog} />}
                         </div>
                         <Link to="/signup">
-                            <button onClick={() => { navigateToSignUp() }} className='border px-5 py-1 rounded-sm w-2/3 mx-auto'>Create a new account</button>
+                            <button className='border px-5 py-1 rounded-sm w-2/3 mx-auto'>Create a new account</button>
 
                             {/* {isNewAccountDialogOpen && <CreateNewAccountModal modalOff={closeDialog} />} */}
 
