@@ -11,22 +11,22 @@ const UserDashboardMenus = () => {
             <ul className='ms-10 space-y-10'>
                 <li className='flex items-center gap-2'>
                     <ImProfile className='text-2xl' />
-                    <Link to="/employee-dashboard/profile">Profile</Link>
+                    <Link to="/dashboard/profile">Profile</Link>
 
                 </li>
-                <li className='flex items-center gap-2'>
+                {/* <li className='flex items-center gap-2'>
                     <FaGraduationCap className='text-2xl' />
-                    <Link to="/employee-dashboard/education">Education</Link>
+                    <Link to="/dashboard/education">Education</Link>
 
-                </li>
+                </li> */}
                 <li className='flex items-center gap-2'>
                     <BsBriefcaseFill className='text-xl' />
-                    <Link to="/employee-dashboard/experience">Experience</Link>
+                    <Link to="/dashboard/experience">Experience</Link>
 
                 </li>
                 <li className='flex items-center gap-2'>
                     <VscFeedback className='text-2xl' />
-                    <Link to="/employee-dashboard/feedback">Feedback</Link>
+                    <Link to="/dashboard/feedback">Feedback</Link>
                 </li>
             </ul>
         </div>
