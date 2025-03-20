@@ -2,27 +2,30 @@ import React, { useState } from 'react'
 import DashboardNav from '../DashboardNav';
 import UserDashboardMenus from './DashboardMenus';
 import EmpToCompany from '../reviews/EmpToCompany'
+import ChangePassword from '../ChangePassword';
 
 const Dashboard = () => {
 
 
 
     return (
-        <div>
+        <div className='relative'>
             <UserDashboardMenus />
 
             <DashboardNav />
 
-            <div className='ml-[248px] p-10'>
+            <div className='absolute p-10 left-[248px] w-[calc(100%-248px)]'>
                 {
-                    window.location.href === "http://localhost:5173/employee-dashboard/profile" ? (
+                    window.location.href === "http://localhost:5173/dashboard/profile" ? (
                         <div>profile Page</div>
-                    ) : window.location.href === "http://localhost:5173/employee-dashboard/education" ? (
+                    ) : window.location.href === "http://localhost:5173/dashboard/education" ? (
                         <div>education Page</div>
-                    ) : window.location.href === "http://localhost:5173/employee-dashboard/experience" ? (
+                    ) : window.location.href === "http://localhost:5173/dashboard/experience" ? (
                         <div>Experience Page</div>
-                    ) : window.location.href === "http://localhost:5173/employee-dashboard/feedback" ? (
-                        <EmpToCompany /> 
+                    ) : window.location.href === "http://localhost:5173/dashboard/feedback" ? (
+                        <EmpToCompany />
+                    ) : window.location.href === "http://localhost:5173/dashboard/change-password" ? (
+                        <ChangePassword />
                     ) : null
                 }
             </div>
