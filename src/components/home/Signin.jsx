@@ -39,10 +39,12 @@ const Signin = () => {
                 }
                 if (values.userType == "Employee") {
                     var loginObj = { username: values.username, password: values.password }
-                    const response = await axios.post("http://13.61.233.178:8080/employee/login", loginObj, { headers: { 'Content-Type': 'application/json' } });
+                    const response = await axios.post("http://13.61.233.178:8080/employee/login", loginObj, { headers: { 'Content-Type': 'application/json' }, withCredentials: true });
                     console.log(response.data.redirectUrl);
 
                     if (response.data.status == "success") {
+                        const responseUrl = await axios.get("http://13.61.233.178:8080" + response.data.redirectUrl, { headers: { 'Content-Type': 'application/json' }, withCredentials: true });
+                        console.log(responseUrl);
                         navigate("/dashboard");
                     }
                 }

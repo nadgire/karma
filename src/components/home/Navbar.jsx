@@ -34,7 +34,7 @@ const Navbar = () => {
                             {
                                 menuItems.map((x) => {
                                     return (
-                                        <li key={x} onClick={funMenuSelection}>{x}</li>
+                                        <li key={x} onClick={funMenuSelection} className='cursor-pointer'>{x}</li>
                                     )
                                 })
                             }
