@@ -23,6 +23,7 @@ const Signup = () => {
             console.log("now : ", type);
         }
     }
+    
     return (
         <div className='flex flex-col w-full text-center'>
             <span className='mt-10 mb-10 text-xl capitalize'>

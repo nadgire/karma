@@ -1,34 +1,61 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Field, ErrorMessage } from 'formik'
 import { FaUser } from "react-icons/fa";
 import { IoMdLock } from "react-icons/io";
 import * as Yup from "yup";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Signin = () => {
-    const navigate = useNavigate
+    const navigate = useNavigate();
     const validationSchema = Yup.object({
         username: Yup.string()
             .min(3, "Username must be at least 3 characters")
             .required("Username is required"),
         password: Yup.string()
-            .min(8, "Password must be at least 8 characters")
+            .min(5, "Password must be at least 8 characters")
             .required("Password is required"),
     });
 
-    function handleSubmit(values) {
+    async function handleSubmit(values) {
         console.log(values);
+        const response = await axios.get("http://13.61.233.178:8080/employee/login");
+        console.log(response.data);
         navigate("/dashboard");
+    }
+
+    const [type, setType] = useState("Employee");
+
+    function typeToggle() {
+        if (type === 'Employee') {
+            $('#typeToggle').toggleClass('left-0');
+            $('#typeToggle').toggleClass('right-0');
+            setType("Organization");
+            console.log("now : ", type);
+        }
+        else {
+            $('#typeToggle').toggleClass('left-0');
+            $('#typeToggle').toggleClass('right-0');
+            setType("Employee");
+            console.log("now : ", type);
+        }
     }
 
     return (
         <div className='flex flex-col w-[40%] text-center'>
-            <span className='mt-10 mb-10 text-xl'>
+            <span className='m-10 text-xl'>
                 Sign in to KARMA
             </span>
 
             <div>
-                <Formik initialValues={{ username: '', password: '', rememberCheck: false }} validationSchema={validationSchema} onSubmit={(values) => {
+                <div className='flex items-center justify-center gap-2 mb-10'>
+                    <span> Employee </span>
+                    <div className='bg-gray-500 min-w-14 h-8 rounded-full relative' onClick={typeToggle}>
+                        <div id={'typeToggle'} className='bg-[#F95B15] w-8 h-8 rounded-full absolute left-0'></div>
+                    </div>
+                    <span> Organization </span>
+                </div>
+                <Formik initialValues={{ username: '', password: '' }} validationSchema={validationSchema} onSubmit={(values) => {
                     handleSubmit(values);
                 }}>
                     {({ handleSubmit, handleChange, values }) => (
