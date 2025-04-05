@@ -19,7 +19,7 @@ const Signin = () => {
 
     async function handleSubmit(values) {
         console.log(values);
-        const response = await axios.get("http://13.61.233.178:8080/employee/login");
+        const response = await axios.post("http://13.61.233.178:8080/employee/login");
         console.log(response.data);
         navigate("/dashboard");
     }
