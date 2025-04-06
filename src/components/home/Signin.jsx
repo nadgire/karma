@@ -18,37 +18,51 @@ const Signin = () => {
     });
 
     async function handleSubmit(values) {
-        console.log(values);
-        fetch(`http://13.61.233.178:8080/employee/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                "username": values.username,
-                "password": values.password,
-            }),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            }
-            )
-            .then((data) => {
-                console.log(data);
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('user', JSON.stringify(data.user));
+        // fetch(`http://13.61.233.178:8080/employee/login`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         "username": values.username,
+        //         "password": values.password,
+        //     }),
+        // })
+        //     .then((response) => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.json();
+        //     }
+        //     )
+        //     .then((data) => {
+        //         console.log(data);
+        //         localStorage.setItem('token', data.token);
+        //         localStorage.setItem('user', JSON.stringify(data.username));
+        //         navigate("/dashboard");
+        //     }
+        //     )
+        //     .catch((error) => {
+        //         console.error('There has been a problem with your fetch operation:', error);
+        //     }
+        //     );
+        // console.log(response.data);
+        const payload = {
+            username: values.username,
+            password: values.password,
+        }
+        try {
+            const response = await axios.post("http://13.61.233.178:8080" + "/employee/login", payload);
+            console.log(response);
+            if (response.status == 200) {
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('user', JSON.stringify(response.data.username));
+                localStorage.setItem('user_id', response.data.employeeId);
                 navigate("/dashboard");
             }
-            )
-            .catch((error) => {
-                console.error('There has been a problem with your fetch operation:', error);
-            }
-            );
-        console.log(response.data);
-        navigate("/dashboard");
+        } catch (error) {
+            console.error('There has been a problem with your axios request:', error);
+        }
     }
 
     const [type, setType] = useState("Employee");

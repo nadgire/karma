@@ -73,10 +73,14 @@ const EmpSignup = () => {
             }),
     });
 
+    function handleSubmit(values){
+        
+    }
+
     return (
         <div className='mt-10 w-[40%] mx-auto'>
             <Formik initialValues={{ username: '', password: '', rememberCheck: false }} validationSchema={validationSchema} onSubmit={(values) => {
-                console.log(values)
+                handleSubmit(values);
             }}>
                 {({ handleSubmit, handleChange, values }) => (
                     <form onSubmit={handleSubmit} className='space-y-5'>

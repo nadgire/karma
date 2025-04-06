@@ -1,17 +1,19 @@
-import React from 'react'
 import Profile from './Profile'
 import { useLocation } from 'react-router-dom';
 import EmpToCompReview from '../review/EmpToCompReview';
 import ChangePassword from './ChangePassword';
 import DeleteAccount from './DeleteAccount';
 
-const Background = () => {
+const Background = (props) => {
+
+    const userDetails = props.sendUserDetails;
+
     const location = useLocation();
     return (
         <>
             <div className={'relative h-[calc(100vh-150px)] w-[95%] bg-[rgba(0,0,0,0.05)] rounded-4xl p-14 z-10 flex gap-5'}>
-                {location.pathname == '/dashboard' && <Profile />}
-                {location.pathname == '/review' && <EmpToCompReview />}
+                {location.pathname == '/dashboard' && <Profile sendUserDetails={userDetails} />}
+                {location.pathname == '/review' && <EmpToCompReview sendUserDetails={userDetails} />}
                 {location.pathname == '/change-password' && <ChangePassword />}
                 {location.pathname == '/delete-account' && <DeleteAccount />}
             </div>

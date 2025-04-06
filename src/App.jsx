@@ -17,7 +17,6 @@ function App() {
           <Route path="/change-password" element={<Dashboard />} />
           <Route path="/delete-account" element={<Dashboard />} />
           <Route path="/logout" element={<Home />} />
-
         </Routes>
       </BrowserRouter>
     </>

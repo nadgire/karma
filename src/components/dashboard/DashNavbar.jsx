@@ -8,7 +8,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { MdLogout } from "react-icons/md";
 
 
-const DashNavbar = () => {
+const DashNavbar = (props) => {
 
     const [profileDivFlag, setProfileDivFlag] = useState(false);
 
@@ -31,8 +31,8 @@ const DashNavbar = () => {
                 <div className='w-1/6 flex items-center gap-3 justify-end'>
                     <img src={user} alt="" className='w-10 h-10' />
                     <div className='flex items-center gap-2' onClick={profileDiv}>
-                        <span className='text-xl'>
-                            Hello user
+                        <span className='text-xl whitespace-nowrap capitalize'>
+                            {props.sendUserDetails}
                         </span>
                         <FaCaretDown className='text-2xl' />
                     </div>
