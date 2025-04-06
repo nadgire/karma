@@ -11,7 +11,7 @@ const DashSidebar = () => {
     const location = useLocation();
     const userType = "Employee";
     const [menuItems, setMenuItems] = useState([]);
-    console.log(menuItems);
+    
     useEffect(() => {
 
         if (userType == 'Employee') {
@@ -48,8 +48,6 @@ const DashSidebar = () => {
 
             ]);
         }
-        console.log(menuItems);
-
     }, [])
 
     return (

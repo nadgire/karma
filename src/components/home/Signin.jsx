@@ -19,7 +19,34 @@ const Signin = () => {
 
     async function handleSubmit(values) {
         console.log(values);
-        const response = await axios.post("http://13.61.233.178:8080/employee/login");
+        fetch(`http://13.61.233.178:8080/employee/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "username": values.username,
+                "password": values.password,
+            }),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            }
+            )
+            .then((data) => {
+                console.log(data);
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                navigate("/dashboard");
+            }
+            )
+            .catch((error) => {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+            );
         console.log(response.data);
         navigate("/dashboard");
     }
