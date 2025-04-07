@@ -58,7 +58,9 @@ const Signin = () => {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.username));
                 localStorage.setItem('user_id', response.data.employeeId);
-                navigate("/dashboard");
+                // const userDetailsResponse = await axios.get(`http://13.61.233.178:8080/employee/${response.data.employeeId}/home`, { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}`, } });
+                // console.log(userDetailsResponse.data.employee);
+                navigate("/profile");
             }
         } catch (error) {
             console.error('There has been a problem with your axios request:', error);
@@ -80,6 +82,10 @@ const Signin = () => {
             setType("Employee");
             console.log("now : ", type);
         }
+    }
+
+    function forgotPassword() {
+
     }
 
     return (
@@ -119,11 +125,7 @@ const Signin = () => {
                                 <ErrorMessage name="password" component="div" className="error text-red-600 text-start" />
                             </div>
                             <div className='flex items-center justify-between'>
-                                <label>
-                                    <Field type="checkbox" name="rememberCheck" />
-                                    <span> Remember me</span>
-                                </label>
-                                <label htmlFor="forgotPassword">Forgot Password?</label>
+                                <label htmlFor="forgotPassword" onClick={forgotPassword}>Forgot Password?</label>
                             </div>
                             <div className='pt-5'>
                                 <button type='submit' className='capitalize bg-[#F95B15] text-white font-semibold px-10 py-2 rounded-full' onSubmit={handleSubmit}>sign in</button>

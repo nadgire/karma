@@ -16,7 +16,7 @@ const EmpToCompReview = (props) => {
                 },
             });
             if (response.data.status === 'success') {
-                console.log(response.data.data.reviews)
+                console.log(response.data.data)
                 setAllReviews(response.data.data.reviews);
             }
         } catch (error) {
@@ -88,6 +88,9 @@ const EmpToCompReview = (props) => {
                                 })
                             }
                         </tbody>
+                        <tfoot>
+                            
+                        </tfoot>
                     </table>
                 </div>
             </div>

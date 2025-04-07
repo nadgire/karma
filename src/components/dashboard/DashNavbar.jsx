@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 import { MdSpaceDashboard } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdLogout } from "react-icons/md";
-
+import { useNavigate } from 'react-router-dom';
 
 const DashNavbar = (props) => {
 
     const [profileDivFlag, setProfileDivFlag] = useState(false);
+    const navigate = useNavigate();
 
     function profileDiv() {
         setProfileDivFlag(!profileDivFlag)
@@ -19,6 +20,13 @@ const DashNavbar = (props) => {
     function funMenuClick(event) {
         setProfileDivFlag(false);
         console.log(event.currentTarget.id);
+    }
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        localStorage.removeItem("user_id");
+        navigate('/');
     }
 
     return (
@@ -43,8 +51,8 @@ const DashNavbar = (props) => {
                     <div className='absolute right-0 top-24 w-72 bg-[#F95B15] z-20 h-fit p-10 text-white rounded-bl-3xl'>
                         <ul className='flex flex-col gap-5'>
                             <li id={'dashboard'} className='flex items-center gap-2' onClick={funMenuClick}>
-                                <MdSpaceDashboard className={`text-xl ${location.pathname == '/dashboard' ? 'text-white font-bold' : ''}`} />
-                                <Link to={'/dashboard'} className={`${location.pathname == '/dashboard' ? 'text-white font-bold' : ''}`}>Dashboard</Link>
+                                <MdSpaceDashboard className={`text-xl ${location.pathname == '/profile' ? 'text-white font-bold' : ''}`} />
+                                <Link to={'/profile'} className={`${location.pathname == '/profile' ? 'text-white font-bold' : ''}`}>Profile</Link>
                             </li>
                             <li id={'changePassword'} className='flex items-center gap-2' onClick={funMenuClick}>
                                 <RiLockPasswordLine className={`text-xl ${location.pathname == '/change-password' ? 'text-white font-bold' : ''}`} />
@@ -52,7 +60,7 @@ const DashNavbar = (props) => {
                             </li>
                             <li className='flex items-center gap-2'>
                                 <MdLogout className={`text-xl ${location.pathname == '/logout' ? 'text-white font-bold' : ''}`} />
-                                <Link to={'/logout'} className={`${location.pathname == '/logout' ? 'text-white font-bold' : ''}`}>Logout</Link>
+                                <span className='cursor-pointer' onClick={logout}>Logout</span>
                             </li>
                         </ul>
                     </div>

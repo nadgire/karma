@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import a from '../../assets/Images/kl1-1.png'
+import { useDispatch } from 'react-redux';
+import { fetchUserProfileData } from '../../redux/slices/UserProfile';
 
 
 const Profile = (props) => {
+    const dispatch = useDispatch();
 
-    const userDetails = props.sendUserDetails;
-    const [imgUrl, setImgUrl] = useState('');
-
+    useEffect(() => {
+        dispatch(fetchUserProfileData())
+    }, [])
     return (
         <>
             <div className='w-[50%] h-full bg-white rounded-4xl px-20 py-8 relative whitespace-nowrap'>
                 <div className='h-56'>
-                    {imgUrl ? (
-                        <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkxIF_uP6uSM-x2mPFIqXoEztgGZztr_-0LqzMJS71pyuvvkkdV_KvekLXa-q3uDC6ud4&usqp=CAU'} alt={'profile image'} className='mx-auto h-56 rounded-2xl' loading="lazy" crossorigin="anonymous" />
-                    ) : (
-                        <span className='flex items-center justify-center'>Loading image...</span>
-                    )}
+                    <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkxIF_uP6uSM-x2mPFIqXoEztgGZztr_-0LqzMJS71pyuvvkkdV_KvekLXa-q3uDC6ud4&usqp=CAU'} alt={'profile image'} className='mx-auto h-56 rounded-2xl' loading="lazy" crossorigin="anonymous" />
                 </div>
                 <br />
                 <div className='border-b-gray-300 border-b-2'>
@@ -28,10 +27,10 @@ const Profile = (props) => {
                         <span>Is Account Verified</span>
                     </div>
                     <div className='flex flex-col gap-3 w-1/2'>
-                        <span>{userDetails.username}</span>
+                        {/* <span>{userDetails.username}</span>
                         <span>*************</span>
                         <span>{userDetails.status == true ? "Yes" : "No"}</span>
-                        <span>{userDetails.verificationStatus == true ? "Yes" : "No"}</span>
+                        <span>{userDetails.verificationStatus == true ? "Yes" : "No"}</span> */}
                     </div>
                 </div>
                 <div className='absolute bottom-10 left-1/2 -translate-x-1/2'>
@@ -53,10 +52,10 @@ const Profile = (props) => {
                             <span className='whitespace-nowrap'>Last 4 Digits of Aadhar</span>
                         </div>
                         <div className='flex flex-col gap-3 w-1/2'>
-                            <span className='capitalize'>{userDetails.name}</span>
+                            {/* <span className='capitalize'>{userDetails.name}</span>
                             <span>{userDetails.mobileNo}</span>
                             <span>{userDetails.alternateMobileNo}</span>
-                            <span>****</span>
+                            <span>****</span> */}
                         </div>
                     </div>
                 </div>
@@ -76,12 +75,12 @@ const Profile = (props) => {
                             <span>Report To</span>
                         </div>
                         <div className='flex flex-col gap-3 w-1/2'>
-                            <span>{userDetails.employeeUid}</span>
+                            {/* <span>{userDetails.employeeUid}</span>
                             <span>{userDetails.email}</span>
                             <span>{userDetails.role}</span>
                             <span>{userDetails.roleInCompany}</span>
                             <span>{userDetails.companyId}</span>
-                            <span>{userDetails.reportTo}</span>
+                            <span>{userDetails.reportTo}</span> */}
                         </div>
                     </div>
                 </div>

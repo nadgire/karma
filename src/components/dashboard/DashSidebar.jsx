@@ -18,10 +18,10 @@ const DashSidebar = () => {
 
             setMenuItems([
                 {
-                    id: 'dashboard',
-                    title: 'Dashboard',
-                    path: '/dashboard',
-                    icon: <MdSpaceDashboard className={`text-xl ${location.pathname == '/dashboard' ? 'text-[#F95B15]' : ''}`} />,
+                    id: 'profile',
+                    title: 'Profile',
+                    path: '/profile',
+                    icon: <MdSpaceDashboard className={`text-xl ${location.pathname == '/profile' ? 'text-[#F95B15]' : ''}`} />,
                 },
                 {
                     id: 'review',

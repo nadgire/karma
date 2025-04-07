@@ -1,22 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RxTriangleLeft } from "react-icons/rx";
 import Signin from './Signin';
-import Signup from './Signup';
+import Signup from './signup/Signup';
 import Logo from '../../assets/Images/kl1.png'
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
-  const [formFlag, setFormFlag] = useState("login");
-
+  const [formFlag, setFormFlag] = useState(true);
+  const navigate = useNavigate();
   function handleClick(event) {
+
     if (event.currentTarget.id === 'loginDiv') {
-      setFormFlag("login");
+      setFormFlag(true);
+      navigate('/login')
     }
     if (event.currentTarget.id === 'signupDiv') {
-      setFormFlag("signup");
+      setFormFlag(false);
+      navigate('/signup')
     }
 
   }
+
+  useEffect(() => {
+    navigate('/login')
+  }, [])
 
   return (
     <div className='flex h-[100vh] whitespace-nowrap'>
@@ -32,7 +40,7 @@ const Home = () => {
             </div>
           </div>
           {
-            formFlag === 'login' && (
+            formFlag && (
               <div id={'triangle'}>
                 <RxTriangleLeft className='text-[#F1F2ED] text-[250px] absolute right-0 translate-x-[120px] top-1/2 -translate-y-1/2' />
               </div>
@@ -50,7 +58,7 @@ const Home = () => {
             </div>
 
             {
-              formFlag === 'signup' && (
+              !formFlag && (
                 <div id={'triangle'}>
                   <RxTriangleLeft className='text-[#F1F2ED] text-[250px] absolute right-0 translate-x-[120px] top-1/2 -translate-y-1/2' />
                 </div>
@@ -65,12 +73,10 @@ const Home = () => {
         <div className=''>
           <img src={Logo} alt="" className='w-96' />
         </div>
-        {
-          formFlag === 'login' && (<Signin />)
-        }
-        {
-          formFlag === 'signup' && (<Signup />)
-        }
+        {/* {
+          formFlag ? (<Signin />) : (<Signup />)
+        } */}
+        <Outlet />
       </div>
     </div>
   )
